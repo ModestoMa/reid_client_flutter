@@ -14,7 +14,7 @@ class MissingPlatformDirectoryException implements Exception {
 
   final String message;
 
-  final Object? details;
+  final Object details;
 
   @override
   String toString() {
@@ -39,7 +39,7 @@ PathProviderPlatform get _platform {
 }
 
 Future<Directory> getRootPath() async {
-  final String? path = await _platform.getRootPath();
+  final String path = await _platform.getRootPath();
   if (path == null) {
     throw MissingPlatformDirectoryException('Unable to get root directory');
   }

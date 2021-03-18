@@ -19,40 +19,40 @@ class MethodChannelPathProvider extends PathProviderPlatform {
     _platform = platform;
   }
 
-  Future<String?> getTemporaryPath() {
+  Future<String> getTemporaryPath() {
     return methodChannel.invokeMethod<String>('getTemporaryDirectory');
   }
 
-  Future<String?> getApplicationSupportPath() {
+  Future<String> getApplicationSupportPath() {
     return methodChannel.invokeMethod<String>('getApplicationSupportPath');
   }
 
-  Future<String?> getLibraryPath() {
+  Future<String> getLibraryPath() {
     if (!_platform.isIOS && !_platform.isMacOS) {
       throw UnsupportedError('Functionality only available on iOS/macOS');
     }
     return methodChannel.invokeMethod<String>('getLibraryPath');
   }
 
-  Future<String?> getApplicationDocumentsPath() {
+  Future<String> getApplicationDocumentsPath() {
     return methodChannel.invokeMethod<String>('getApplicationDocumentsPath');
   }
 
-  Future<String?> getExternalStoragePath() {
+  Future<String> getExternalStoragePath() {
     if (!_platform.isAndroid) {
       throw UnsupportedError('Functionality only available on Android');
     }
     return methodChannel.invokeMethod<String>('getExternalStoragePath');
   }
 
-  Future<List<String>?> getExternalCachePaths() {
+  Future<List<String>> getExternalCachePaths() {
     if (!_platform.isAndroid) {
       throw UnsupportedError('Functionality only available on Android');
     }
     return methodChannel.invokeMethod<List<String>>('getExternalCachePaths');
   }
 
-  Future<List<String>?> getExternalStoragePaths({StorageDirectory? type}) {
+  Future<List<String>> getExternalStoragePaths({StorageDirectory type}) {
     if (!_platform.isAndroid) {
       throw UnsupportedError('Functionality only available on Android');
     }
@@ -60,14 +60,14 @@ class MethodChannelPathProvider extends PathProviderPlatform {
         'getExternalStoragePaths', <String, dynamic>{'type': type?.index});
   }
 
-  Future<String?> getDownloadsPath() {
+  Future<String> getDownloadsPath() {
     if (!_platform.isMacOS) {
       throw UnsupportedError('Functionality only available on macOS');
     }
     return methodChannel.invokeMethod<String>('getDownloadsPath');
   }
 
-  Future<String?> getRootPath() {
+  Future<String> getRootPath() {
     if (!_platform.isWindows && !_platform.isLinux && !_platform.isMacOS) {
       throw UnsupportedError(
           'Functionality only available on windows, linux or macOS');

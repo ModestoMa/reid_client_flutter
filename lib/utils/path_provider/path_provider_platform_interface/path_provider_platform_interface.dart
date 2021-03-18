@@ -19,46 +19,46 @@ abstract class PathProviderPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getTemporaryPath() {
+  Future<String> getTemporaryPath() {
     throw UnimplementedError('getTemporaryPath() has not been implemented');
   }
 
-  Future<String?> getApplicationSupportPath() {
+  Future<String> getApplicationSupportPath() {
     throw UnimplementedError(
         'getApplicationSupportPath() has not been implemented');
   }
 
-  Future<String?> getLibraryPath() {
+  Future<String> getLibraryPath() {
     throw UnimplementedError('getLibraryPath() has not been implemented');
   }
 
-  Future<String?> getApplicationDocumentsPath() {
+  Future<String> getApplicationDocumentsPath() {
     throw UnimplementedError(
         'getApplicationDocumentsPath() has not been implemented');
   }
 
-  Future<String?> getExternalStoragePath() {
+  Future<String> getExternalStoragePath() {
     throw UnimplementedError(
         'getExternalStoragePath() has not been implemented');
   }
 
-  Future<List<String>?> getExternalCachePaths() {
+  Future<List<String>> getExternalCachePaths() {
     throw UnimplementedError(
         'getExternalCachePaths() has not been implemented');
   }
 
-  Future<List<String>?> getExternalStoragePaths({
-    StorageDirectory? type,
+  Future<List<String>> getExternalStoragePaths({
+    StorageDirectory type,
   }) {
     throw UnimplementedError(
         'getExternalStoragePaths() has not been implemented');
   }
 
-  Future<String?> getDownloadsPath() {
+  Future<String> getDownloadsPath() {
     throw UnimplementedError('getDownloadsPath() has not been implemented');
   }
 
-  Future<String?> getRootPath() {
+  Future<String> getRootPath() {
     throw UnimplementedError('getRootPath() has not been implemented');
   }
 }

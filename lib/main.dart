@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
 
   Duration get loginTime => Duration(milliseconds: 1250);
 
-  Future<String?> _authUser(LoginData data) {
+  Future<String> _authUser(LoginData data) {
     print('Name: ${data.name}, Password: ${data.password}');
     return Future.delayed(loginTime).then((_) {
       if (!users.containsKey(data.name)) {
@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
     });
   }
 
-  Future<String?> _recoverPassword(String name) {
+  Future<String> _recoverPassword(String name) {
     print('Name: $name');
     return Future.delayed(loginTime).then((_) {
       if (!users.containsKey(name)) {
