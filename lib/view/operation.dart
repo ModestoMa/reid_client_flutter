@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:filesystem_picker/filesystem_picker.dart';
 
 class OperationView extends StatefulWidget {
   @override
@@ -43,6 +43,9 @@ class OperationHome extends StatefulWidget {
 }
 
 class _OperationHomeState extends State<OperationHome> {
+
+  Directory rootPath;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,13 +58,16 @@ class _OperationHomeState extends State<OperationHome> {
           children: [
             TextButton(
                 onPressed: () async {
-                  FilePickerCross myFile =
-                      await FilePickerCross.importFromStorage(
-                          type: FileTypeCross.any,
-                          // Available: `any`, `audio`, `image`, `video`, `custom`. Note: not available using FDE
-                          fileExtension:
-                              'txt, md' // Only if FileTypeCross.custom . May be any file extension like `dot`, `ppt,pptx,odp`
-                          );
+                  rootPath = await getDownloadsDirectory();
+                  String path = await FilesystemPicker.open(
+                    title: 'Save to folder',
+                    context: context,
+                    rootDirectory: rootPath,
+                    fsType: FilesystemType.folder,
+                    pickText: 'Save file to this folder',
+                    folderIconColor: Colors.teal,
+                  );
+                  print(path);
                 },
                 child: Text('选择文件夹'))
           ],
