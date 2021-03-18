@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:path_provider/path_provider.dart';
+import '../utils/path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:filesystem_picker/filesystem_picker.dart';
 
@@ -44,7 +44,7 @@ class OperationHome extends StatefulWidget {
 
 class _OperationHomeState extends State<OperationHome> {
 
-  Directory rootPath;
+  late Directory rootPath;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,7 @@ class _OperationHomeState extends State<OperationHome> {
           children: [
             TextButton(
                 onPressed: () async {
-                  rootPath = await getDownloadsDirectory();
+                  rootPath = await getRootPath();
                   String path = await FilesystemPicker.open(
                     title: 'Save to folder',
                     context: context,
